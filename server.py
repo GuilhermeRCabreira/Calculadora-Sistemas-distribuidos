@@ -1,7 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import math
 
 app = Flask(__name__)
+
+# Rota para servir o HTML da calculadora
+@app.route('/')
+def index():
+    return send_from_directory('static', 'calculadora.html') 
+
+@app.route('/script.js')
+def serve_js():
+    return send_from_directory('static', 'script.js')
 
 # Memória para armazenar as variáveis
 variables = {"x": 0.0, "y": 0.0, "z": 0.0}
@@ -79,6 +88,27 @@ def resolve_argument(arg):
         return math.e
     else:
         return float(arg)
+
+@app.route('/wscalc/sq/<arg1>', methods=['GET'])
+def square(arg1):
+    try:
+        val1 = resolve_argument(arg1)
+        result = val1 ** 2
+        return jsonify(result=result)
+    except Exception as e:
+        return str(e), 400
+    
+@app.route('/wscalc/inv/<arg1>', methods=['GET'])
+def inverse(arg1):
+    try:
+        val1 = resolve_argument(arg1)
+        if val1 == 0:
+            raise ValueError("Divisão por zero não é permitida.")
+        result = 1 / val1
+        return jsonify(result=result)
+    except Exception as e:
+        return str(e), 400
+
 
 if __name__ == '__main__':
     app.run(port=8080)
