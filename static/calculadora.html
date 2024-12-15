@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f0f4f8, #d9e6f2);
+      margin: 0;
+    }
+
+    .calculator {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .display {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: right;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      padding: 10px;
+    }
+
+    button {
+      background: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(2px);
+    }
+
+    button.yellow {
+      background: #fffbcc;
+    }
+
+    button.yellow:hover {
+      background: #fff59d;
+    }
+
+    button.red {
+      background: #ffcdd2;
+    }
+
+    button.red:hover {
+      background: #ef9a9a;
+    }
+
+    @media (max-width: 480px) {
+      .buttons button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .display {
+        font-size: 28px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <!-- Display -->
+    <div class="display"></div>
+    
+    <!-- Botões -->
+    <div class="buttons">
+      <!-- Primeira linha -->
+      <button class="yellow">RX</button>
+      <button class="yellow">RY</button>
+      <button class="yellow">RZ</button>
+      <button>sin</button>
+      <button>cos</button>
+
+      <!-- Segunda linha -->
+      <button class="yellow">SX</button>
+      <button class="yellow">SY</button>
+      <button class="yellow">SZ</button>
+      <button>tan</button>
+      <button>sec</button>
+
+      <!-- Terceira linha -->
+      <button>log</button>
+      <button>log₂</button>
+      <button>ln</button>
+      <button>x²</button>
+      <button>√x</button>
+
+      <!-- Quarta linha -->
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>×</button>
+      <button>!x</button>
+
+      <!-- Quinta linha -->
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>/</button>
+      <button>1/x</button>
+
+      <!-- Sexta linha -->
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+      <button>|x|</button>
+
+      <!-- Sétima linha -->
+      <button>+/-</button>
+      <button>0</button>
+      <button>.</button>
+      <button>-</button>
+      <button>π</button>
+
+      <!-- Oitava linha -->
+      <button class="red">C</button>
+      <button class="red">CE</button>
+      <button>^</button>
+      <button>=</button>
+      <button>e</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
